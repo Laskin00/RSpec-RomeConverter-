@@ -2,6 +2,10 @@ require 'rome_converter'
 
   RSpec.describe RomeConverter do
 
+    it "checks for 0 convertion" do
+      expect(RomeConverter.new.to_rome(0)).to be_nil
+    end
+
     it "converts one to I" do
       expect(RomeConverter.new.to_rome(1)).to eq 'I'
     end
@@ -66,6 +70,14 @@ require 'rome_converter'
       expect(RomeConverter.new.to_rome(4999)).to eq 'MMMMCMXCIX'
     end
 
+    it "checks for 5000 convertion" do
+      expect(RomeConverter.new.to_rome(5000)).to be_nil
+    end
+
+    it "check for empty" do
+      expect(RomeConverter.new.to_dec('')).to be_nil
+    end
+
     it "converts I to one" do
       expect(RomeConverter.new.to_dec('I')).to eq 1
     end
@@ -84,6 +96,18 @@ require 'rome_converter'
 
     it "converts V to five" do
       expect(RomeConverter.new.to_dec('V')).to eq 5
+    end
+
+    it "converts VI to six" do
+      expect(RomeConverter.new.to_dec('VI')).to eq 6
+    end
+
+    it "converts VII to seven" do
+      expect(RomeConverter.new.to_dec('VII')).to eq 7
+    end
+
+    it "converts VIII to eight" do
+      expect(RomeConverter.new.to_dec('VIII')).to eq 8
     end
 
     it "converts IX to nine" do
@@ -128,6 +152,9 @@ require 'rome_converter'
 
     it "converts MMMMCMXCIX to four thousand nine hundred ninety nine" do
       expect(RomeConverter.new.to_dec('MMMMCMXCIX')).to eq 4999
+    end
+    it "check for 5000 bad convertion" do
+      expect(RomeConverter.new.to_dec('MMMMM')).to be_nil
     end
 
   end
