@@ -1,4 +1,4 @@
-require 'roman'
+require 'romе_converter'
 
 RSpec.describe RomeConverter do
 
